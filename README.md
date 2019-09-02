@@ -2,12 +2,12 @@
 Docker-machineとVirtualBoxを用いてLAMP開発環境を構築するプロジェクトです。  
 サンプルとして簡易なチャットアプリを起動できます  
 
-# 最初に
+## 最初に
 ・あなたが所持しているWindowsマシーンやMacマシーンをホストとします  
 ・Docker-machineで構築した仮想マシーンをDockerホストとします  
 ・Dockerで構築したものをDockerコンテナとします  
 
-# 構築方法
+## 構築方法
 ０１． 当サンプルプロジェクトをクローンしてください  
 ０２． https://docs.docker.com/toolbox/overview/ から Docker Toolbox をインストールする  
 ０３． Docker Quickstart Terminal を起動  
@@ -25,7 +25,7 @@ Docker-machineとVirtualBoxを用いてLAMP開発環境を構築するプロジ�
 １５．　ブラウザで [http://192.168.99.100/test_app/] または ０５． で変更した場合は [http://~変更したIP~/test_app/] を確認する  
 １６． テストアプリが起動していたら完了です！  
 
-#　立ち上がった環境で開発
+## 立ち上がった環境で開発
 ・共有フォルダで指定したホスト側のコードを編集すると、Dockerホスト→Dockerコンテナに反映されますので、従来の感覚で開発ができます。  
 ・PHPMyAdminを起動するには ０４． で確認したIPに [:8000] のポート番号をつけてアクセスしてください。[User=root:Pass=00000]  
 ・$docker-compose stop でDockerコンテナ停止  
