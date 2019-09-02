@@ -1,0 +1,12 @@
+FROM php:7.2-apache
+RUN curl -L git.io/nodebrew | perl - setup && \
+export PATH=$HOME/.nodebrew/current/bin:$PATH && \
+nodebrew install v8.9.4 && nodebrew use v8.9.4 && \
+npm install -g forever && \
+ln -s /root/.nodebrew/node/v8.9.4/lib/node_modules/forever/bin/forever /usr/local/bin/forever && \
+cd /root/.nodebrew/current/bin && \
+ln -s $PWD/nodebrew /usr/local/bin/nodebrew && \
+ln -s $PWD/node /usr/local/bin/node && \
+ln -s $PWD/npm /usr/local/bin/npm && \
+ln -s $PWD/npx /usr/local/bin/npx
+RUN docker-php-ext-install pdo_mysql mysqli mbstring exif fileinfo

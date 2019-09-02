@@ -1,0 +1,319 @@
+@charset "utf-8";
+
+body{
+font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+select-user: none;
+-ms-select-user: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+}
+body.smartPhone{
+cursor:pointer;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+#welcome{
+font-size:0.8em;
+float:left;
+color:#fff;
+line-height:1.7;
+white-space:nowrap;
+overflow-x:hidden;
+line-height:2;
+}
+#welcome:before{
+content:'ようこそ';
+}
+#welcome:after{
+content:'さん';
+}
+#welcome div{
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: hidden;
+    max-width: calc(100vw - 18em);
+    vertical-align: middle;
+}
+#welcome span{
+color:#5f5;
+font-weight:bold;
+}
+
+
+.cvPopup{
+position:fixed;
+top:0;
+left:0;
+overflow-y:auto;
+width:100%;
+height:100%;
+background:rgba(100,100,120,0.8);
+z-index:2;
+}
+.cvPopup div{
+position:absolute;
+top:50%;
+left:50%;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+width:calc(95% - 20px);
+padding:10px;
+background:rgba(0,0,20,0.8);
+color:#fff;
+font-weight:bold;
+text-align:center;
+border-radius:8px;
+box-shadow: 0 0 15px #000;
+}
+#previewAlert.cvPopup{
+z-index:6;
+}
+.previewAlertList{
+margin-bottom:15px;
+line-height:2em;
+}
+.previewAlertList:nth-of-type(1){
+margin-top:10px;
+line-height:1.4em;
+}
+.previewAlertList:nth-last-of-type(1){
+margin-bottom:10px;
+}
+
+#pageHeader{
+background:#888;
+}
+#title{
+width:calc(100% - 153px);
+padding:12px 5px;
+color:#fff;
+float:left;
+}
+h1{
+float:left;
+line-height:1.4;
+}
+h1 span{
+font-size:0.8em;
+vertical-align:middle;
+}
+@media screen and (max-width:499px){
+h1 span{
+font-size:0.65em;
+}
+}
+
+#roomListNews,#roomListOption{
+position:relative;
+float:right;
+margin-right:3px;
+width:100px;
+z-index:1;
+padding:8px 20px;
+color:#fff;
+text-align:center;
+}
+#roomListNews{background:#bbb;margin-top:6px;padding-left:20px;cursor:pointer;}
+#roomListOption{background:#88f;margin-top:3px;cursor:pointer;}
+#roomListNews span{vertical-align:middle;}
+#roomListNews span.new{
+opacity:0;
+position:absolute;
+top:5px;
+left:8px;
+background:rgba(255,0,0,0.8);
+color:#fff;
+font-weight:bold;
+padding:4px 8px;
+border-radius:10px;
+font-size:12px;
+}
+
+#optionUl{
+min-width:150px;
+position:absolute;
+top:0;
+right:0;
+background:#8cc;
+}
+#optionUl .optionList{
+padding:8px 5px;
+border-bottom:1px solid #fff;
+cursor:pointer;
+}
+#optionUl .optionList:nth-last-of-type(even){
+background:rgba(255,0,0,0.05);
+}
+
+
+h2{
+float:left;
+margin:10px;
+width:calc(100% - 163px);
+}
+
+#joinRoom{
+padding:3px;
+clear:both;
+}
+#joinRoom li{
+background:#88f;
+padding:10px;
+color:#fff;
+border-bottom:#fff 1px solid;
+line-height:1.4;
+cursor:pointer;
+font-weight:bold;
+}
+#joinRoom li span{
+margin-left:10px;
+color:#bff;
+}
+#joinRoom li span.roomlistcurmem{color:#ffb;/*margin:0;*/}
+
+
+
+
+
+#createRoomSpace,#renameRoomSpace{
+position: fixed;
+width: calc(100vw - 20px);
+height: 100vh;
+background: rgba(255,255,255,0.9);
+border: 1px #888 solid;
+padding: 10px;
+z-index: 2;
+}
+#createRoomSpace_close,#createRoomSpace_return,#renameRoomSpace_close,#renameRoomSpace_return{
+margin-top:10px;
+margin-right:5px;
+float:right;
+}
+[name="createRoomName"],[name="renameRoomName"]{
+width:95%;
+margin-right:5%;
+line-height:1.6;
+}
+.c_c_btn,.c_c_btn_bottom{
+margin-left:5px;
+margin-top:5px;
+padding:5px 15px;
+font-weight:bold;
+color:#fff;
+text-align:center;
+background:#88e;
+cursor:pointer;
+}
+
+
+
+
+
+
+
+
+/*******申請関連********/
+
+input#userid{margin-bottom:10px;padding:5px;}
+.app_search_space .error{color:#faa;}
+
+.app_search_space,.app_news_space,.app_stts_space{
+position: fixed;
+height: 100vh;
+width: calc(100vw - 10px);
+background: rgba(0,20,20,0.8);
+z-index: 2;
+color: #eee;
+padding:0 5px;
+}
+
+.app_search_space h3,.app_news_space h3,.app_stts_space h3{font-size:1.2em;line-height:2;}
+.app_search_space h4{margin-top:15px;}
+.btn{
+margin-top:15px;
+float: right;
+background: #088;
+padding: 10px 15px;
+cursor:pointer;
+}
+.btn:nth-last-of-type(1){
+margin-right:10px;
+}
+
+
+#app_result_list li{cursor:pointer;}
+
+.tanzakuList li{
+word-wrap:break-word;
+padding:5px 10px;
+color:#333;
+border-bottom:#333 1px solid;
+line-height:2;
+}
+.tanzakuList li:nth-of-type(odd){background:#cc8;}
+.tanzakuList li:nth-of-type(even){background:#dd8;}
+
+
+.app_news_space .tanzakuList,.app_stts_space .tanzakuList{
+overflow-y: auto;
+max-height: calc(100vh - 100px);
+}
+
+.tanzakuList span{margin-left:15px;font-weight:bold;}
+.kyoka_btn,.kyohi_btn,.delApp_btn{background:#aa0;padding:5px 15px;cursor:pointer;}
+
+
+
+#taikai_space,#roomDel_space{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 6;
+}
+#taikai_space{
+    background: rgba(128,0,0,0.9);
+}
+#roomDel_space{
+    background: rgba(128,0,128,0.9);
+}
+
+#taikai_space form,#roomDel_space form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow-y: auto;
+    width: calc(95% - 20px);
+    max-height: 80%;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+#taikai_space .container,#roomDel_space .container{
+margin-top:20px;
+}
+
+#taikai_space #taikai_submit,#taikai_cancel,#roomDel_space #roomDel_submit,#roomDel_cancel{
+	margin-top:20px;
+    font-weight: bold;
+    background: #eee;
+    border: solid 2px #fd5;
+    padding: 5px 20px;
+	background:#fc3;
+	cursor:pointer;
+}
+
+#taikai_cancel,#roomDel_cancel{
+    width: 100px;
+    margin: 20px auto;
+    background: #222;
+    line-height: 1.8;
+    border: none;
+}
+
+.error{color:#fc0;}

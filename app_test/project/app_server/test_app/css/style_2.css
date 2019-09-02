@@ -1,0 +1,1578 @@
+@charset "utf-8";
+
+.talkOptionList{
+padding:1em;
+margin:0.5em;
+}
+
+#trapEL{
+    position: absolute;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+color:#fff;
+font-weight:bold;
+overflow:hidden;
+}
+#trapEL h4{
+    text-align: center;
+    line-height: 2;
+    color: #c30;
+font-size:150%;
+}
+#trapEL ul{
+margin:0 10px;
+}
+#trapEL li{
+margin-bottom:5px;
+}
+#trapEL li img{
+width:45px;
+float:left;
+}
+#trapEL li p{
+margin-left:55px;
+padding-top:10px;
+font-size:1.2em;
+line-height:1.4;
+}
+.trapEL{
+animation:shake 0.25s 1;
+}
+
+.cutin{
+position:absolute;
+top:-35px;
+left:100%;
+color:#fff;
+background:rgba(0,0,0,0.6);
+width: calc(100% - 10px);
+text-align:left;
+padding:5px;
+line-height:1.2;
+font-weight:bold;
+z-index:2;
+}
+.cutin p{
+border:1px solid #0aa;
+background:rgba(0,0,0,0.5);
+min-height:52px;
+padding:5px;
+}
+.cutin img{
+width:50px;
+margin:5px;
+margin-right:10px;
+vertical-align:middle;
+border:2px solid #0aa;
+float:left;
+}
+.cutin p span[data-skillColor="無"]{color:#ccc;}
+.cutin p span[data-skillColor="火"]{color:#f30;}
+.cutin p span[data-skillColor="水"]{color:#0ff;}
+.cutin p span[data-skillColor="電"]{color:#ff0;}
+.cutin p span[data-skillColor="木"]{color:#3f0;}
+
+.cutin p span.dicemax{color:#0ff;}
+.cutin p span.dicefumble{color:#f00;}
+.cutin p span.skillEffectTxt{color:#ffc;}
+
+
+
+#backTopBtn,#goBottomBtn{
+position:fixed;
+width:0;
+height:0;
+display:block;
+border:15px solid transparent;
+font-weight:bold;
+color:#fff;
+}
+#backTopBtn{
+border:30px solid transparent;
+bottom:30px;right:5px;
+border-top: 0px solid transparent;
+border-bottom:40px solid rgba(50,50,50,0.6);
+cursor:pointer;
+}
+/*#backTopBtn{bottom:65px;right:5px;border-bottom:20px solid rgba(50,50,50,0.6);}*/
+#goBottomBtn{bottom:20px;right:5px;border-top:20px solid rgba(50,50,50,0.6);}
+
+#headInfo{
+float:left;
+width:calc(55% - 15px);
+margin-bottom:5px;
+}
+#headTalk{
+float:left;
+width:calc(60% - 15px);
+margin-bottom:5px;
+}
+#sessionTag{width:calc(40% - 20px);}
+#currentMember{background:#6dd;width:calc(25% - 20px);}
+#infoBGM{background:#6d6;width:calc(20% - 15px);}
+#sessionTag,#currentMember,#infoBGM{
+float:left;
+color:#fff;
+padding:5px;
+margin-left:5px;
+line-height:1.2em;
+text-align:center;
+cursor:pointer;
+}
+.nameScrollWrap{overflow:hidden;white-space:nowrap;}
+.sessionOrderNew{background:#d66;}
+.sessionOrderOld{background:#66d;}
+
+
+dd.talk img{
+display:block;
+/*content:"";*/
+background:#000;
+height:40px;
+width:40px;
+position:absolute;
+bottom:5px;
+}
+dd.myTalk img{
+left:10px;
+}
+dd.otherTalk img{
+right:10px;
+}
+
+.fukiL{position:absolute;bottom:8px;left:-14px;display:block;width:0;height:0;border:7px solid transparent;border-right:7px solid #fff;border-top:7px solid #fff;}
+.fukiR{position:absolute;bottom:8px;right:-14px;display:block;width:0;height:0;border:7px solid transparent;border-left:7px solid #fff;border-top:7px solid #fff;}
+
+
+#selectAvt{
+width:40px;
+border:1px solid #bbb;
+vertical-align:bottom;
+cursor:pointer;
+}
+
+#optionUl{
+width:100%;
+min-width:90px;
+position:absolute;
+top:0;
+right:0;
+z-index:2;
+}
+.optionList{
+background:#0bb;
+padding:10px 0;
+border-bottom:1px solid #fff;
+}
+
+#previewAlert.cvPopup,#previewAlert.modalList{
+z-index:12;
+}
+.previewAlertList{
+margin-bottom:15px;
+line-height:2em;
+}
+.previewAlertList:nth-of-type(1){
+margin-top:10px;
+}
+.previewAlertList:nth-last-of-type(1){
+margin-bottom:10px;
+}
+
+/*//////////////*/
+#diceChoiceSpace{
+position:relative;
+top:50%;
+left:50%;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+width:calc(100% - 20px);
+max-width:480px;
+max-height:calc(100vh - 90px);
+/*background:#fff;
+border:1px #888 solid;*/
+padding:10px;
+z-index:2;
+}
+
+[data-diceName]{
+margin-bottom:10px;
+}
+[data-diceName] select{
+margin-top:-5px;
+padding:5px;
+cursor:pointer;
+}
+
+
+
+
+
+#selectSessionSpace,#createSessionSpace{
+position:fixed;
+/*top:100px;
+left:50%;
+-webkit-transform:translate(-50%,0%);
+transform:translate(-50%,0%);*/
+width:100vw;
+max-width:100vw;
+height:100vh;
+max-height:100vh;
+background:rgba(255,255,255,0.95);
+border:1px #888 solid;
+/*padding:10px;*/
+z-index:7;
+}
+#selectSessionSpace h3{margin:5px;margin-top:15px;}
+#selectSessionList{
+margin-top:10px;
+padding:5px 2px;
+border:1px solid #555;
+overflow-y:auto;
+max-height:calc(100% - 200px);
+}
+#selectSessionList li{
+line-height:1.6;
+padding:2px;padding-left:5px;border-bottom:1px solid #ddd;
+cursor:pointer;
+}
+#selectSessionOrder{margin-top:10px;}
+#selectSessionOrder li{
+float:right;
+margin-right:5px;
+background:#6dd;
+padding:5px 10px;
+color:#fff;
+cursor:pointer;
+}
+.selectedList{
+background:#d55;
+color:#fff;
+}
+.selectedBtn{
+border-bottom:5px solid #d55;
+}
+#selectSessionDate{
+text-align:right;
+margin-top:10px;
+margin-right:5px;
+clear:both;
+}
+[name="selectStartDay"]{
+width:150px;
+height:20px;
+font-size:16px;
+font-weight:bold;
+}
+#createSessionSpace h4{margin:10px;}
+[name="createSessionName"]{
+width:calc(100% - 30px);
+margin-left:10px;
+line-height:1.6;
+}
+#selectSessionSpace_close,#selectSessionSpace_return,#createSessionSpace_close,#createSessionSpace_return{
+margin-top:10px;
+margin-right:5px;
+float:right;
+}
+#selectSession_delete{
+float:left;
+margin-top:10px;
+margin-right:5px;
+background:#d55;
+}
+#selectSessionSpace_create{margin:0;margin-bottom:10px;padding:8px 0;}
+
+#pageControll a{
+text-decoration:none;
+color:#fff;
+display:block;
+padding:5px 0;
+width:100%;
+height:100%;
+}
+
+#pageControll li{
+float:left;
+margin:5px;
+margin-right:0;
+padding:5px 0;
+line-height:2em;
+color:#fff;
+font-weight:bold;
+}
+#pageControll #addPage{
+padding:8px 0;
+clear:both;
+width:calc(100% - 10px);
+text-align:center;
+margin-bottom:0;
+background:#d73;
+cursor:pointer;
+}
+#pageControll #newPage{
+padding:0;
+width:calc(30% - 7.5px);
+text-align:center;
+background:#d66;
+cursor:pointer;
+}
+#pageControll #selectPage{
+width:calc(70% - 7.5px);
+text-align:center;
+background:#66d;
+}
+#selectPage select{
+margin-right:5px;
+vertical-align:top;
+width:45px;
+text-align:center;
+height:2em;
+vertical-align:middle;
+cursor:pointer;
+vertical-align:text-bottom;
+}
+#curPageSpan{
+color:#fdd;
+}
+
+
+/******shop*********/
+#shop_close{
+position:absolute;top:5px;right:5px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+#shop_sort{
+position:absolute;top:5px;right:92px;
+background:#5bb;padding:5px 15px;
+cursor:pointer;
+}
+#customer_money{
+position: absolute;top: 35px;right: 5px;
+background: #986;padding: 5px 15px;font-size: 1.15em;
+}
+#customer_money span{font-weight: bold;}
+#shop_space{
+position:fixed;
+color:#fff;
+background:rgba(0,50,50,0.9);
+width:100%;
+min-height:100vh;
+max-height:100vh;
+z-index:7;
+}
+#customer{
+width:50px;
+}
+
+#customer{
+position:relative;
+top:5px;
+left:5px;
+}
+
+#shop_space #customer:after{
+content:'購入者';
+}
+
+#shop_space ul li.selected{background:#c33;}
+#shop_action{margin:5px;}
+#shop_action li{padding:5px 0;text-align:center;float:left;width:calc(100% / 2);cursor:pointer;}
+#shop_action li:nth-of-type(odd){background:#ccc;}
+#shop_action li:nth-of-type(even){background:#bbb;}
+#shop_about{margin:5px;margin-top:10px;}
+#shop_about li{padding:5px 0;text-align:center;float:left;width:calc(100% / 3);cursor:pointer;}
+#shop_about li:nth-of-type(odd){background:#bbb;}
+#shop_about li:nth-of-type(even){background:#ccc;}
+#shop_about li:nth-of-type(3){cursor:unset;}
+
+#shop_item{margin:5px;}
+#shop_item li{padding:5px 0;text-align:center;float:left;width:calc(100% / 4);cursor:pointer;}
+#shop_item li:nth-of-type(odd){background:#ccc;}
+#shop_item li:nth-of-type(even){background:#bbb;}
+@media screen and (max-width:349px){
+#shop_item li:nth-of-type(2){
+font-size:0.9em;
+line-height:1.15;
+}
+}
+
+#goods_list{position:relative;margin:5px;overflow-y:auto;max-height:calc(100vh - 180px);}
+#goods_list li{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;cursor:pointer;}
+#goods_list li:nth-last-of-type(odd){background:#555;}
+#goods_list li:nth-last-of-type(even){background:#777;}
+
+#goods_list .rare{color:#fd0;font-size:0.8em;margin-right:10px;}
+#goods_list [data-goodsType]{font-size:0.85em;padding:1px 8px;margin-right:10px;}
+#goods_list [data-goodsType="atk"]{background:#c22;color:#fff;}
+#goods_list [data-goodsType="cmd"]{background:#a00;color:#fff;}
+#goods_list [data-goodsType="thr"]{background:#cc2;color:#444;}
+#goods_list [data-goodsType="gun"]{background:#22c;color:#fff;}
+#goods_list [data-goodsType="snp"]{background:#00a;color:#fff;}
+#goods_list [data-goodsType="emap"]{background:#c2c;color:#fff;}
+#goods_list [data-goodsType="pmap"]{background:#2cc;color:#fff;}
+#goods_list [data-goodsType="med"]{background:#2c2;color:#444;}
+#goods_list [data-goodsType="exa"]{background:#5cc;color:#fff;}
+#goods_list [data-goodsType="prs"]{background:#c55;color:#fff;}
+#goods_list [data-goodsType="buf"]{background:#8b8;color:#fff;}
+#goods_list [data-goodsType="dbf"]{background:#b88;color:#fff;}
+#goods_list [data-goodsType="atktrp"]{background:#c52;color:#fff;}
+#goods_list [data-goodsType="prstrp"]{background:#c52;color:#fff;}
+#goods_list [data-goodsType="dbftrp"]{background:#c52;color:#fff;}
+
+#goods_list .name{vertical-align:middle;font-weight:bold;}
+#goods_list [data-elemName="無"]{color:#eee;}
+#goods_list [data-elemName="火"]{color:#eaa;}
+#goods_list [data-elemName="水"]{color:#bbf;}
+#goods_list [data-elemName="電"]{color:#ee8;}
+#goods_list [data-elemName="木"]{color:#6e6;}
+
+
+#goods_list .name{margin-right:5px;line-height:1.8;}
+#goods_list .cost{margin-right:10px;line-height:1.8;}
+#goods_list .price{float:right;font-weight:bold;line-height:1.8;}
+
+
+/*****list animation*****/
+#goods_list li,#prof_skill li,#prof_ability li,.sttsChar_itemList li,#stts1,#stts2,#stts3,.consume_list li,.itemRP_list li,#set_list li,#get_list li{
+	-webkit-animation: ani_show1 0.5s ease 0s 1;
+	animation: ani_show1 0.5s ease 0s 1;
+	animation-fill-mode:forwards;
+}
+/*****list animation*****/
+
+
+
+
+#goods_preview{
+position: fixed;
+z-index: 8;
+background: rgba(0,0,0,0.5);
+width: 100%;
+height: 100vh;
+color: #fff;
+	-webkit-animation: ani_show1 0.5s ease 0s 1;
+	animation: ani_show1 0.5s ease 0s 1;
+	animation-fill-mode:forwards;
+}
+
+#preview_modal{
+position:absolute;
+top:50%;
+/*bottom:0;
+right:0;*/
+left:50%;
+transform:translate(-50%,-50%);
+margin:auto;
+overflow-y:auto;
+width:80%;
+max-height:80%;
+background:#000;
+padding:0 15px;
+border-radius:8px;
+box-shadow: 0 0 15px #000;
+}
+
+#preview_modal p{
+margin:10px 0;
+}
+#preview_modal p span{
+font-weight:bold;
+}
+.preview_price{color:#db0;font-size:1.5em;text-align:right;}
+.preview_rare{float:left;color:#fd0;line-height:1.5em;
+    text-shadow: 0 0 5px #fff;}
+.preview_name{font-weight:bold;font-size:1.2em;clear:both;}
+.preview_type{font-weight:bold;}
+.preview_text{background:#333;line-height:1.5;padding:5px;}
+
+
+#preview_modal #preview_cancel,#preview_modal #preview_buy,#preview_modal #preview_sale,#preview_modal #preview_purge,#preview_modal #preview_equip,#preview_modal #preview_use,#preview_modal #preview_RPuse{
+float:right;
+margin-left:10px;
+background:#55c;
+padding:5px 10px;
+cursor:pointer;
+}
+/*****shop*****/
+
+
+
+
+
+
+
+/******custom*********/
+#custom_close{
+position:absolute;top:5px;right:75px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+#custom_return{
+position:absolute;top:5px;right:5px;
+background:#88f;padding:5px 15px;
+cursor:pointer;
+}
+#custom_cost{
+position: absolute;
+right: 20px;
+top: 50px;
+font-size: 20px;
+font-weight:bold;
+}
+#custom_space{
+position:fixed;
+color:#fff;
+background:rgba(0,50,50,0.9);
+width:100%;
+min-height:100vh;
+max-height:100vh;
+z-index:3;
+}
+
+#custom_title{
+margin:5px;
+}
+
+#customer{
+width:50px;
+position:relative;
+top:5px;
+left:5px;
+}
+
+#custom_space ul li.selected{background:#c33;}
+#custom_item{margin:5px;}
+#custom_item li{padding:5px 0;text-align:center;float:left;width:calc(100% / 2);cursor:pointer;}
+#custom_item li:nth-of-type(odd){background:#ccc;}
+#custom_item li:nth-of-type(even){background:#bbb;}
+
+#set_list,#get_list{width:calc(50% - 10px);float:left;}
+#set_list:before,#get_list:before{position:fixed;display:block;text-align:center;font-size:20px;line-height:1.6;margin-top:-27px;}
+#set_list:before{content:'装着';}
+#get_list:before{content:'所持';}
+
+
+
+.custom_list{position:relative;margin:5px;margin-top:25px;overflow-y:auto;max-height:calc(100vh - 158px);}
+.custom_list li{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;cursor:pointer;}
+.custom_list li:nth-last-of-type(odd){background:#555;}
+.custom_list li:nth-last-of-type(even){background:#777;}
+
+.custom_list [data-getSkillType]{font-size:0.85em;padding:1px 8px;margin-right:10px;}
+.custom_list [data-getSkillType="atk"]{background:#c22;color:#fff;}
+.custom_list [data-getSkillType="cmd"]{background:#a00;color:#fff;}
+.custom_list [data-getSkillType="thr"]{background:#cc2;color:#444;}
+.custom_list [data-getSkillType="gun"]{background:#22c;color:#fff;}
+.custom_list [data-getSkillType="snp"]{background:#00a;color:#fff;}
+.custom_list [data-getSkillType="emap"]{background:#c2c;color:#fff;}
+.custom_list [data-getSkillType="pmap"]{background:#2cc;color:#fff;}
+.custom_list [data-getSkillType="med"]{background:#2c2;color:#444;}
+.custom_list [data-getSkillType="exa"]{background:#5cc;color:#fff;}
+.custom_list [data-getSkillType="prs"]{background:#c55;color:#fff;}
+.custom_list [data-getSkillType="buf"]{background:#8b8;color:#fff;}
+.custom_list [data-getSkillType="dbf"]{background:#b88;color:#fff;}
+.custom_list [data-getSkillType="atktrp"]{background:#c52;color:#fff;}
+.custom_list [data-getSkillType="prstrp"]{background:#c52;color:#fff;}
+.custom_list [data-getSkillType="dbftrp"]{background:#c52;color:#fff;}
+
+.custom_list .name{vertical-align:middle;font-weight:bold;}
+.custom_list [data-elemName="無"]{color:#eee;}
+.custom_list [data-elemName="火"]{color:#eaa;}
+.custom_list [data-elemName="水"]{color:#bbf;}
+.custom_list [data-elemName="電"]{color:#ee8;}
+.custom_list [data-elemName="木"]{color:#6e6;}
+
+.custom_list .name{margin-right:5px;line-height:1.8;}
+
+
+.custom_equip,.custom_purge{
+line-height:1.8;
+padding:0 10px;
+font-weight:bold;
+float:right;
+}
+
+.custom_purge{
+color:#a00;
+background:#ccc;
+}
+.custom_equip{
+color:#eee;
+background:#f84;
+}
+/******custom*********/
+
+
+
+/******consume*********/
+#consume_close,#itemRP_close{
+position:absolute;top:5px;right:5px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+
+#diceEv_close{
+position:absolute;top:5px;right:141px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+#diceEv_enter{
+position:absolute;top:5px;right:5px;
+background:#8cc;padding:5px 15px;
+cursor:pointer;
+}
+
+#consume_space,#itemRP_space,#diceEv_space{
+position:fixed;
+color:#fff;
+width:100%;
+min-height:100vh;
+max-height:100vh;
+z-index:3;
+}
+#consume_space{background:rgba(0,50,50,0.9);}
+#itemRP_space{background:rgba(50,50,0,0.9);}
+#diceEv_space{background:rgba(50,0,50,0.9);}
+
+#custom_title{
+margin:5px;
+}
+
+#customer{
+width:50px;
+position:relative;
+top:5px;
+left:5px;
+}
+
+#consume_space ul li.selected{background:#c33;}
+
+.consume_list,.itemRP_list{width:calc(100% - 10px);float:left;}
+.consume_list:before,.itemRP_list:before{position:fixed;display:block;text-align:center;font-size:20px;line-height:1.6;margin-top:-27px;}
+.consume_list:before{content:'消費アイテム一覧';}
+.itemRP_list:before{content:'ユニークアイテム一覧';}
+
+.consume_list,.itemRP_list{position:relative;margin:5px;margin-top:25px;overflow-y:auto;max-height:calc(100vh - 112px);}
+.consume_list li,.itemRP_list li{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;cursor:pointer;}
+.consume_list li:nth-last-of-type(odd),.itemRP_list li:nth-last-of-type(odd){background:#555;}
+.consume_list li:nth-last-of-type(even),.itemRP_list li:nth-last-of-type(even){background:#777;}
+
+
+.consume_list .name,.itemRP_list .name{vertical-align:middle;font-weight:bold;}
+
+.consume_list .name,.itemRP_list .name{margin-right:5px;line-height:1.8;}
+
+
+.custom_use,.custom_RPuse{
+line-height:1.8;
+padding:0 10px;
+font-weight:bold;
+float:right;
+}
+
+.custom_use,.custom_RPuse{
+color:#a00;
+background:#ccc;
+}
+.custom_use,.custom_RPuse{
+color:#eee;
+background:#8b4;
+}
+/******consume*********/
+
+
+/*********diceEv*********/
+#diceEv_info::before{
+content:'参照：';
+}
+#diceEv_info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow-y: auto;
+    width: calc(95% - 20px);
+    max-height: 80%;
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #000;
+}
+/*********diceEv*********/
+
+
+/******tool*********/
+#event_create{
+position:absolute;top:5px;right:5px;
+background:#88f;padding:5px 15px;
+cursor:pointer;
+}
+#memo_create{
+position:absolute;top:5px;right:141px;
+background:#88f;padding:5px 15px;
+cursor:pointer;
+}
+#tool_close{
+position:absolute;top:5px;right:270px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+@media screen and (max-width:349px){
+#event_create,#memo_create,#tool_close{
+font-size:0.9em;
+line-height:1.15;
+}
+#event_create{
+right:5px;
+}
+#memo_create{
+right:125px;
+}
+#tool_close{
+right:239px;
+}
+}
+
+
+
+#tool_space{
+position:fixed;
+color:#fff;
+background:rgba(0,50,50,0.9);
+width:100%;
+min-height:100vh;
+max-height:100vh;
+z-index:3;
+}
+
+#tool_space ul li.selected{background:#c33;}
+#tool_item{margin:5px;margin-top:40px;}
+#tool_item li{padding:5px 0;text-align:center;float:left;width:calc(100% / 3);cursor:pointer;}
+#tool_item li:nth-of-type(odd){background:#ccc;}
+#tool_item li:nth-of-type(even){background:#bbb;}
+
+#tool_list{position:relative;margin:5px;overflow-y:auto;height:100vh;max-height:calc(100vh - 77px);}
+#tool_list li{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;}
+#tool_list li:nth-last-of-type(odd){background:#555;}
+#tool_list li:nth-last-of-type(even){background:#777;}
+
+#tool_list [data-goodsType]{font-size:0.85em;padding:1px 8px;margin-right:10px;}
+#tool_list [data-goodsType="atk"]{background:#c22;color:#fff;}
+#tool_list [data-goodsType="cmd"]{background:#a00;color:#fff;}
+#tool_list [data-goodsType="thr"]{background:#cc2;color:#444;}
+#tool_list [data-goodsType="gun"]{background:#22c;color:#fff;}
+#tool_list [data-goodsType="snp"]{background:#00a;color:#fff;}
+#tool_list [data-goodsType="emap"]{background:#c2c;color:#fff;}
+#tool_list [data-goodsType="pmap"]{background:#2cc;color:#fff;}
+#tool_list [data-goodsType="med"]{background:#2c2;color:#444;}
+#tool_list [data-goodsType="exa"]{background:#5cc;color:#fff;}
+#tool_list [data-goodsType="prs"]{background:#c55;color:#fff;}
+#tool_list [data-goodsType="buf"]{background:#8b8;color:#fff;}
+#tool_list [data-goodsType="dbf"]{background:#b88;color:#fff;}
+#tool_list [data-goodsType="atktrp"]{background:#c52;color:#fff;}
+#tool_list [data-goodsType="prstrp"]{background:#c52;color:#fff;}
+#tool_list [data-goodsType="dbftrp"]{background:#c52;color:#fff;}
+
+#tool_list [data-elemName="無"]{color:#eee;}
+#tool_list [data-elemName="火"]{color:#eaa;}
+#tool_list [data-elemName="水"]{color:#bbf;}
+#tool_list [data-elemName="電"]{color:#ee8;}
+#tool_list [data-elemName="木"]{color:#6e6;}
+
+
+#tool_list .cost{margin-right:10px;line-height:1.8;}
+#tool_list .price{float:right;font-weight:bold;line-height:1.8;}
+
+#tool_list li[data-type]{
+cursor:pointer;
+	-webkit-animation: ani_show1 0.5s ease 0s 1;
+	animation: ani_show1 0.5s ease 0s 1;
+	animation-fill-mode:forwards;
+}
+
+#tool_list li[data-type="情報"]:nth-of-type(odd){background:#655;}
+#tool_list li[data-type="情報"]:nth-of-type(even){background:#877;}
+#tool_list li[data-type="場所"]:nth-of-type(odd){background:#565;}
+#tool_list li[data-type="場所"]:nth-of-type(even){background:#787;}
+#tool_list li[data-type="依頼"]:nth-of-type(odd){background:#556;}
+#tool_list li[data-type="依頼"]:nth-of-type(even){background:#778;}
+
+#tool_list li[data-type="情報"] .mem_name,
+#tool_list li[data-type="情報"] .mem_type,.mem_caption{color:#fee;}
+#tool_list li[data-type="場所"] .mem_name,
+#tool_list li[data-type="場所"] .mem_type,.mem_caption{color:#efe;}
+#tool_list li[data-type="依頼"] .mem_name,
+#tool_list li[data-type="依頼"] .mem_type,.mem_caption{color:#eef;}
+
+#tool_list li[data-type] li{
+width:auto;
+}
+#tool_list li[data-type] li img{
+width:45px;
+}
+
+#event_pcList li{cursor:pointer;}
+
+
+
+/*transiton start*/
+.no_disp{opacity:0;}
+
+#tool_list li[data-type] .mem_memo,#tool_list li[data-type] .mem_caption,#tool_list li[data-type] ul{
+line-height:0;
+opacity:0;
+visibility:hidden;
+transition:line-height 0.3s,opacity 0.1s,visibility 0.1s;
+}
+
+#tool_list li[data-type] .mem_memo{
+padding:0;
+margin:0;
+
+transition:padding 0.3s,margin 0.3s;
+}
+#tool_list li[data-type] ul li{
+	height:0;
+    margin:0;
+    padding:0;
+    border-top: 0px solid #333;
+    border-bottom: 0px solid #333;
+    max-width: 0px;
+
+transition:margin 0.3s,padding 0.3s,border-top 0.3s,border-bottom 0.3s;
+}
+#tool_list li[data-type] ul li img{
+width: 0px;
+transition:width 0.3s;
+}
+
+
+#tool_list li[data-type].memo-open .mem_memo,#tool_list li[data-type].memo-open .mem_caption,#tool_list li[data-type].memo-open ul{
+line-height:1.5;
+opacity:1;
+visibility:visible;
+transition:line-height 0.3s,opacity 0.1s,visibility 0.1s;
+}
+
+#tool_list li[data-type].memo-open .mem_memo{
+padding: 5px;
+margin: 5px 0;
+transition:padding 0.3s,margin 0.3s;
+}
+#tool_list li[data-type].memo-open ul li{
+	height:auto;
+    margin: 3px 0;
+    padding: 10px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    max-width: 80px;
+
+transition:margin 0.3s,padding 0.3s,border-top 0.3s,border-bottom 0.3s;
+}
+#tool_list li[data-type].memo-open ul li img{
+width: 45px;
+transition:width 0.3s;
+}
+/*transiton end*/
+
+
+
+
+
+#tool_preview{
+position: fixed;
+z-index: 4;
+background: rgba(0,0,0,0.5);
+width: 100%;
+height: 100vh;
+color: #fff;
+}
+
+#tool_modal{
+position:absolute;
+top:0;
+bottom:0;
+right:0;
+left:0;
+margin:auto;
+overflow-y:auto;
+width:80%;
+max-height:80%;
+background:#000;
+padding:0 15px;
+}
+
+#tool_modal p{
+margin:10px 0;
+}
+#tool_modal p span{
+font-weight:bold;
+}
+.preview_price{color:#db0;font-size:1.5em;text-align:right;}
+.preview_rare{float:left;color:#fd0;line-height:1.5em;
+    text-shadow: 0 0 5px #fff;}
+.preview_name{font-weight:bold;font-size:1.2em;clear:both;}
+.preview_type{font-weight:bold;}
+.preview_text{background:#333;line-height:1.5;padding:5px;}
+
+/*****tool*****/
+
+
+/******evCreate,memoCreate****/
+
+#evCreate_space,#memoCreate_space{
+position:fixed;
+top:0;
+left:0;
+overflow-y:auto;
+height:100vh;
+width:calc(100vw);
+color:#fff;
+z-index:4;
+}
+#evCreate_space{background:rgba(200,64,0,0.8);}
+#memoCreate_space{background:rgba(0,100,100,0.8);}
+
+#evCreate_space .toolcap,#memoCreate_space .toolcap{
+min-width:5em;
+display:inline-block;
+text-align:center;
+}
+
+
+#evCreate_space input,#memoCreate_space input{padding:5px;}
+#evCreate_space select,#memoCreate_space select{
+padding:5px;
+vertical-align:text-bottom;
+}
+#evCreate_space textarea,#memoCreate_space textarea{
+vertical-align:middle;
+}
+
+#evCreate_space h3,#evCreate_space p,
+#memoCreate_space h3,#memoCreate_space p{margin:5px;}
+#evCreate_space h4,#memoCreate_space h4{
+margin:5px;margin-top:10px;
+}
+
+
+#ev_name,#ev_dice,#ev_upMoney,
+#memo_name,#memo_type{margin-bottom:10px;}
+
+#ev_success [name=up1],#ev_success [name=up2],
+#ev_fail [name=down1],#ev_fail [name=down2]{
+width:135px;
+}
+
+#ev_target,#memo_target{
+border:1px solid #fff;
+margin:5px;
+min-height:15px;
+}
+#event_list_per{
+position:absolute;
+top:-5px;
+left:5px;
+padding:5px;
+background:rgba(0,0,0,0.4);
+}
+#evTargetSelect,#memoTargetSelect{
+margin: 5px;
+font-weight: bold;
+padding: 15px 10px;
+background: #f33;
+text-align: center;
+border-radius:20px;
+box-shadow:0 0 8px #b00;
+cursor:pointer;
+}
+
+#evBtn li,#memoBtn li{
+float: right;
+background: #800;
+margin: 5px;
+padding: 10px;
+cursor:pointer;
+}
+.everr{color:#ff5;}
+/******evCreate****/
+
+/******evList*******/
+.ev_name,.mem_name{
+float: left;
+font-weight: bold;
+margin-bottom: 5px;
+max-width: calc(100% - 60px);
+word-break: break-all;
+font-size:1.3em;
+}
+.mem_name{margin-top:7px;max-width: calc(100% - 120px);}
+
+.mem_memo{clear:both;padding:5px;margin:5px 0;background:#999;line-height:1.25;
+    select-user: text;
+    -ms-select-user: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    word-break: break-all;
+}
+
+.mem_type,.mem_caption{
+font-size:0.8em;
+}
+
+.upcolor{color:#8ff;}
+.downcolor{color:#f88;}
+.upcolor_txt{color:#dff;font-weight:bold;}
+.downcolor_txt{color:#fdd;font-weight:bold;}
+.ev_deleteBtn,.mem_editBtn,.mem_deleteBtn{
+float:right;
+padding:8px;
+margin-left:10px;
+margin-bottom:5px;
+background:#c00;
+cursor:pointer;
+}
+.mem_editBtn{background:#3aa;}
+
+#memoCreate_space textarea{
+line-height:1.5;
+}
+
+.ev_dice{clear:both;}
+/******evList*******/
+
+
+
+
+/******stts*************/
+#sttsChar_close,#bgm_close{
+position:absolute;top:5px;right:5px;
+background:#f88;padding:5px 15px;
+cursor:pointer;
+}
+#item_sort{
+position:absolute;top:5px;right:92px;
+background:#5bb;padding:5px 15px;
+cursor:pointer;
+}
+
+#sttsChar_space,#bgm_space,#bgmVol_space{
+position:fixed;
+color:#fff;
+background:rgba(0,0,50,0.9);
+width:100%;
+min-height:100vh;
+max-height:100vh;
+z-index:6;
+}
+#bgm_space{z-index:7;}
+
+#sttsChar_title{
+margin:10px 5px;
+}
+#bgm_title{
+margin:10px 5px;
+}
+
+#customer{
+width:50px;
+position:relative;
+top:5px;
+left:5px;
+}
+#shop_space #customer{cursor:pointer;}
+.charMoney{
+position: absolute;
+top: 77px;
+right: 5px;
+font-size: 1.0em;
+font-weight: bold;
+}
+
+.lvElem{
+width:calc(100% - 65px);
+position: absolute;
+top: 37px;
+left: 60px;
+font-size: 1.2em;
+font-weight: bold;
+}
+
+.lvElem #charName{
+    width: calc(100% - 65px);
+}
+
+#sttsChar_space ul li.selected,
+#bgm_space ul li.selected
+{background:#c33;}
+
+#sttsChar_about,
+#bgm_about
+{margin:5px;margin-top:10px;}
+#sttsChar_about li{padding:5px 0;text-align:center;float:left;width:calc(100% / 3);cursor:pointer;}
+#bgm_about li{padding:5px 0;text-align:center;float:left;width:calc(100% / 4);cursor:pointer;}
+#sttsChar_about li:nth-of-type(odd),
+#bgm_about li:nth-of-type(odd)
+{background:#bbb;}
+#sttsChar_about li:nth-of-type(even),
+#bgm_about li:nth-of-type(even)
+{background:#ccc;}
+
+@media screen and (max-width:349px){
+#sttsChar_item li:nth-of-type(2),
+#bgm_about li:nth-of-type(1),#bgm_about li:nth-of-type(3){
+font-size:0.9em;
+line-height:1.15;
+}
+
+}
+
+#sttsChar_item{margin:5px;display:none;}
+
+#sttsChar_item li{padding:5px 0;text-align:center;float:left;width:calc(100% / 4);cursor:pointer;}
+#sttsChar_item li:nth-of-type(odd){background:#ccc;}
+#sttsChar_item li:nth-of-type(even){background:#bbb;}
+
+.sttsChar_stts{width:calc(100% - 10px);}
+.sttsChar_stts{position:relative;margin:0 5px;}
+.sttsChar_stts div{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;}
+.sttsChar_stts div:nth-last-of-type(odd){background:#577;}
+.sttsChar_stts div:nth-last-of-type(even){background:#557;}
+
+.itemCount{
+display:none;
+line-height: 1.2;
+font-weight: bold;
+text-align: right;
+margin-right: 5px;
+}
+
+.sttsChar_sttsList{width:calc(50% - 10px);float:left;}
+.sttsChar_sttsList{position:relative;margin:0 5px;overflow-y:auto;max-height:calc(100vh - 219px);}
+.sttsChar_sttsList p{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;}
+.sttsChar_sttsList p:nth-last-of-type(odd){background:#555;}
+.sttsChar_sttsList p:nth-last-of-type(even){background:#777;}
+
+.sttsCol{float:left;}
+.cur{font-weight:bold;}
+.max{font-size:0.8em;}
+
+
+
+
+
+
+.sttsChar_itemList{width:calc(100% - 10px);float:left;display:none;}
+.sttsChar_itemList{position:relative;margin:5px;margin-top:25px;overflow-y:auto;max-height:calc(100vh - 112px);}
+
+.sttsChar_itemList .name{vertical-align:middle;font-weight:bold;}
+.sttsChar_itemList .name{margin-right:5px;line-height:1.8;}
+
+.sttsChar_itemList{position:relative;margin:5px;overflow-y:auto;max-height:calc(100vh - 192px);}
+.sttsChar_itemList .rare{color:#fd0;font-size:0.8em;margin-right:10px;}
+
+.sttsChar_itemList [data-goodsType]{font-size:0.85em;padding:1px 8px;margin-right:10px;}
+.sttsChar_itemList [data-goodsType="atk"]{background:#c22;color:#fff;}
+.sttsChar_itemList [data-goodsType="cmd"]{background:#a00;color:#fff;}
+.sttsChar_itemList [data-goodsType="thr"]{background:#cc2;color:#444;}
+.sttsChar_itemList [data-goodsType="gun"]{background:#22c;color:#fff;}
+.sttsChar_itemList [data-goodsType="snp"]{background:#00a;color:#fff;}
+.sttsChar_itemList [data-goodsType="emap"]{background:#c2c;color:#fff;}
+.sttsChar_itemList [data-goodsType="pmap"]{background:#2cc;color:#fff;}
+.sttsChar_itemList [data-goodsType="med"]{background:#2c2;color:#444;}
+.sttsChar_itemList [data-goodsType="exa"]{background:#5cc;color:#fff;}
+.sttsChar_itemList [data-goodsType="prs"]{background:#c55;color:#fff;}
+.sttsChar_itemList [data-goodsType="buf"]{background:#8b8;color:#fff;}
+.sttsChar_itemList [data-goodsType="dbf"]{background:#b88;color:#fff;}
+.sttsChar_itemList [data-goodsType="atktrp"]{background:#c52;color:#fff;}
+.sttsChar_itemList [data-goodsType="prstrp"]{background:#c52;color:#fff;}
+.sttsChar_itemList [data-goodsType="dbftrp"]{background:#c52;color:#fff;}
+
+.sttsChar_itemList [data-elemName="無"]{color:#eee;}
+.sttsChar_itemList [data-elemName="火"]{color:#eaa;}
+.sttsChar_itemList [data-elemName="水"]{color:#bbf;}
+.sttsChar_itemList [data-elemName="電"]{color:#ee8;}
+.sttsChar_itemList [data-elemName="木"]{color:#6e6;}
+
+.sttsChar_itemList .cost{margin-right:10px;line-height:1.8;}
+
+.sttsChar_itemList li{margin:3px 0;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;cursor:pointer;}
+.sttsChar_itemList li:nth-last-of-type(odd){background:#555;}
+.sttsChar_itemList li:nth-last-of-type(even){background:#777;}
+
+
+
+.sttsChar_profile{width:calc(100% - 10px);float:left;display:none;}
+.sttsChar_profile{position:relative;margin:5px;}
+
+
+.plusColor{color:#bfb;}
+.minusColor{color:#fcc;}
+
+.zense{line-height:1.5;font-weight:bold;}
+.prof{
+word-break:break-all;
+overflow-y: auto;
+max-height: 5em;
+line-height: 1.25;
+background: rgba(100,250,250,0.3);
+padding: 5px 10px;
+}
+
+#prof_skill:before,#prof_ability:before{position:fixed;display:block;text-align:center;line-height:1.6;margin-top:-25px;margin-left:10px;}
+#prof_skill:before{content:'スキル';}
+#prof_ability:before{content:'発動アビリティ';}
+#prof_ability li{line-height:1.8;font-weight:bold;padding-left:20px;}
+
+
+.sttsChar_profile ul{
+float:left;width:calc(50% - 10px);
+margin:0 5px;
+margin-top:30px;
+overflow-y:auto;max-height:calc(100vh - 280px);
+}
+
+.sttsChar_profile ul .name{vertical-align:middle;font-weight:bold;}
+.sttsChar_profile ul .name{margin-right:5px;line-height:1.8;}
+@media screen and (max-width:599px){
+.sttsChar_profile ul .name{display:block;}
+}
+.sttsChar_profile ul .rare{color:#fd0;font-size:0.8em;margin-right:10px;}
+
+.sttsChar_profile ul [data-goodsType]{font-size:0.85em;padding:1px 8px;margin-right:10px;display:inline-block;line-height:1.5;}
+.sttsChar_profile ul [data-goodsType="atk"]{background:#c22;color:#fff;}
+.sttsChar_profile ul [data-goodsType="cmd"]{background:#a00;color:#fff;}
+.sttsChar_profile ul [data-goodsType="thr"]{background:#cc2;color:#444;}
+.sttsChar_profile ul [data-goodsType="gun"]{background:#22c;color:#fff;}
+.sttsChar_profile ul [data-goodsType="snp"]{background:#00a;color:#fff;}
+.sttsChar_profile ul [data-goodsType="emap"]{background:#c2c;color:#fff;}
+.sttsChar_profile ul [data-goodsType="pmap"]{background:#2cc;color:#fff;}
+.sttsChar_profile ul [data-goodsType="med"]{background:#2c2;color:#444;}
+.sttsChar_profile ul [data-goodsType="exa"]{background:#5cc;color:#fff;}
+.sttsChar_profile ul [data-goodsType="prs"]{background:#c55;color:#fff;}
+.sttsChar_profile ul [data-goodsType="buf"]{background:#8b8;color:#fff;}
+.sttsChar_profile ul [data-goodsType="dbf"]{background:#b88;color:#fff;}
+.sttsChar_profile ul [data-goodsType="atktrp"]{background:#c52;color:#fff;}
+.sttsChar_profile ul [data-goodsType="prstrp"]{background:#c52;color:#fff;}
+.sttsChar_profile ul [data-goodsType="dbftrp"]{background:#c52;color:#fff;}
+
+.sttsChar_profile ul [data-elemName="無"]{color:#eee;}
+.sttsChar_profile ul [data-elemName="火"]{color:#eaa;}
+.sttsChar_profile ul [data-elemName="水"]{color:#bbf;}
+.sttsChar_profile ul [data-elemName="電"]{color:#ee8;}
+.sttsChar_profile ul [data-elemName="木"]{color:#6e6;}
+
+.sttsChar_profile ul li{margin:3px 0;padding:10px;border-top:1px solid #333;border-bottom:1px solid #333;}
+.sttsChar_profile ul li:nth-last-of-type(odd){background:#555;}
+.sttsChar_profile ul li:nth-last-of-type(even){background:#777;}
+.sttsChar_profile #prof_skill li{cursor:pointer;}
+
+#charLife p.charLifeBar,#charSun p.charSunBar{
+position:relative;
+display: inline-block;
+background: #333;
+height: 5px;
+width: calc(100% - 160px);
+float:right;
+margin-top:7px;
+margin-left: 10px;
+}
+#charLife span.charLifeBar1{
+transition:width 0.5s ease-in-out 0.2s;
+position:absolute;
+width: 0%;
+height: 5px;
+background: #0f0;
+}
+#charSun span.charSunBar1{
+transition:width 0.5s ease-in-out 0.2s;
+position:absolute;
+width: 0%;
+height: 5px;
+background: #0ff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************/
+
+#result_view{
+padding:5px;
+padding-top:0;
+padding-bottom:41px;
+color:#fff;
+background:#433;
+position:relative;
+}
+
+#result_view li{transition:all 0.5s;opacity:0;height:0;position:absolute;top:5px;}
+#result_view li.open{opacity:1;display:block;height:auto;position:relative;}
+
+#result_view .rare{color:#fd0;}
+
+
+
+.result_name{
+font-weight: bold;
+margin-bottom: 5px;
+}
+.result_name img{
+max-width: 25px;
+vertical-align: bottom;
+margin-right: 5px;
+}
+.result_level{
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.result_price,.result_skill,.result_ability,.result_consume,.result_item{
+font-weight: bold;
+margin:5px 0;
+}
+
+#result_view_btn{
+margin-top:10px;
+position: absolute;
+width: calc(100% - 10px);
+z-index: 1;
+}
+
+#result_view_prev{
+position: absolute;
+padding: 5px 10px;
+background: #588;
+left: 0;
+cursor:pointer;
+}
+#result_view_next{
+position: absolute;
+padding: 5px 10px;
+background: #588;
+right: 0;
+cursor:pointer;
+}
+
+#result_view_close{
+position: absolute;
+top:0;
+right: calc(50% - 1.5em);
+background: #a33;
+padding: 5px 10px;
+cursor:pointer;
+}
+
+/********/
+#memList_space,#quote_space{
+position:fixed;
+width:100vw;
+height:100vh;
+z-index:7;
+font-weight:bold;
+color:#fff;
+}
+#memList_space{background:rgba(0,50,50,0.8);}
+#quote_space{background:rgba(0,25,50,0.8);}
+#quoteContent{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow-y: auto;
+    width: calc(95% - 20px);
+    max-height: 80%;
+    padding: 10px;
+    background: #fff;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #000;
+}
+#quoteContent .phrse,#quoteContent .info{font-weight:normal;}
+#memList_space p{
+text-align:center;
+margin-top:20px;
+font-size:1.2em;
+}
+
+#memList_space ul{
+position:fixed;
+top:52%;
+left:50%;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+width:calc(100% - 60px - 2em);
+max-height:calc(100vh - 150px);
+padding:10px 2em;
+overflow-y:auto;
+background: rgba(0,0,0,0.5);
+border-radius: 15px;
+box-shadow: 0 0 10px #000;
+}
+
+.memList_btn{
+padding:0 10px;
+border-radius:10px;
+margin-left:0.5em;
+word-break:keep-all;
+cursor:pointer;
+}
+#mem_block_enter,#mem_kengen_lost{background:#c33;}
+#mem_block_cancel,#mem_kengen_get{background:#3cc;}
+#previewAlert_close,#quoteContent_close{
+position:absolute;
+top:15px;
+right:15px;
+font-size:2.5em;
+color:#f00;
+text-shadow: 0 0 5px #aaa;
+z-index:1;
+cursor:pointer;
+}
+
+/********/
+[data-goodsType="鉱物"]{background:#c82;color:#fff;}
+[data-goodsType="繊維"]{background:#c22;color:#fff;}
+[data-goodsType="衣類"]{background:#c52;color:#fff;}
+[data-goodsType="道具"]{background:#22c;color:#fff;}
+[data-goodsType="食品"]{background:#2c2;color:#fff;}
+[data-goodsType="武装"]{background:#c2c;color:#fff;}
+[data-goodsType="生物"]{background:#2cc;color:#fff;}
+[data-goodsType="乗り物"]{background:#ccc;color:#000;}
+[data-goodsType="住宅"]{background:#c82;color:#fff;}
+[data-goodsType="ダーク"]{background:#333;color:#fff;}
+[data-goodsType="称号"]{background:#5cc;color:#fff;}
+/********/
+
+/*****bgm******/
+#bgm_item{
+overflow-y:auto;
+height:calc(100vh - 75px);
+margin:5px;
+}
+
+#bgm_item li{max-width:1080px;margin:3px auto;padding:10px;width:calc(100% - 20px);border-top:1px solid #333;border-bottom:1px solid #333;line-height:1.8em;}
+#bgm_item li:nth-last-of-type(odd){background:#555;}
+#bgm_item li:nth-last-of-type(even){background:#777;}
+.bgm_name{float:left;font-weight:bold;font-size:1.15em;margin-right:1em;margin-bottom:5px;}
+.bgm_uid{float:left;margin-right:1em;}
+[data-bgmType]{float:left;font-size:0.8em;margin-right:0.5em;border-radius:5px;padding:0 5px;margin-bottom:5px;text-align:center;min-width:4em;}
+[data-bgmType="荘厳"]{background:#850;}
+[data-bgmType="渋い"]{background:#aaa;}
+[data-bgmType="切ない"]{background:#8bc;}
+[data-bgmType="愉快"]{background:#c95;}
+[data-bgmType="まったり"]{background:#c50;}
+[data-bgmType="熱い"]{background:#c00;}
+[data-bgmType="クール"]{background:#00c;}
+[data-bgmType="ダーク"]{background:#c0c;}
+
+
+
+#bgm_item div{float:right;}
+.bgm_retBtn{
+white-space: nowrap;
+word-break: keep-all;
+font-weight:bold;
+border-radius: 5px;
+background: #f85;
+padding: 3px 20px;
+margin-right: 10px;
+cursor:pointer;
+}
+.bgm_cntBtn{
+white-space: nowrap;
+word-break: keep-all;
+font-weight:bold;
+border-radius: 5px;
+background: #5cc;
+padding: 3px 20px;
+margin-right: 10px;
+cursor:pointer;
+}
+
+.selectedBorder{border:2px solid #f80;}
+
+#bgm_player{opacity:0;}
+
+
+#bgmVol_space{
+color:#fff;
+}
+
+#bgmVol_enter{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #8cc;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+#bgmVol_close{
+    position: absolute;
+    top: 5px;
+    right: 76px;
+    background: #f88;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+#bgmVol_length_div{
+    width: calc(100% - 1em);
+    max-width: 1080px;
+    position: absolute;
+    height: 2em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background: #aaa;
+}
+#bgmVol_length{
+    width: 100%;
+    margin: 0.35em 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*****bgm******/

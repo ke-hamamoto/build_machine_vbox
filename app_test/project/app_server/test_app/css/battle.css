@@ -1,0 +1,474 @@
+@charset "utf-8";
+
+#b_wrap{
+position:relative;
+}
+
+ul#battle_menu,ul#after_move{
+/*position:absolute;*/
+width:100%;
+clear:both;
+}
+
+ul.act_menu_left,ul.act_menu_right,ul.append_menu_left,ul.append_menu_right,ul#com_menu{
+position:absolute;
+bottom:0;
+width:30%;
+z-index:2;
+/*left:0vw;*/
+}
+ul.act_menu_left,ul.append_menu_left{left:0vw;}
+ul.act_menu_right,ul.append_menu_right{right:0vw;}
+
+
+li.battle_menu_list,li.act_menu_list,li.battle_menu_avt,li.append_menu_list,li.com_menu_list{
+padding:15px 0;
+color:#fff;
+text-align:center;
+line-height:1.2;
+word-break:break-all;
+background:rgba(0,0,0,0.5);
+cursor:pointer;
+}
+li.battle_menu_list{
+float:left;
+width:calc(100%/5);
+cursor:pointer;
+}
+@media screen and (max-width:599px){li.battle_menu_list{font-size:0.8em;}}
+
+li.battle_menu_list:nth-of-type(odd){background:rgba(0,0,0,0.8);}
+li.battle_menu_list:nth-of-type(even){background:rgba(32,32,32,0.8);}
+li.after_move_list{
+float:left;
+width:calc(100%/2);
+}
+li.act_menu_list,li.append_menu_list,li.com_menu_list{
+border-bottom:1px solid #ccc;
+width:calc(100%/1);
+}
+@media screen and (max-width:599px){li.act_menu_list{font-size:0.8em;}}
+li.AML_cmd,li.AML_atk{background:rgba(50,0,0,0.5);}
+li.AML_thr{background:rgba(32,32,0,0.5);}
+li.AML_gun,li.AML_snp{background:rgba(0,25,50,0.5);}
+li.AML_emap{background:rgba(32,0,32,0.5);}
+li.AML_med,li.AML_pmap{background:rgba(0,32,0,0.5);}
+li.AML_exa,li.AML_buf{background:rgba(0,50,50,0.5);}
+li.AML_prs,li.AML_dbf{background:rgba(0,0,50,0.5);}
+li.battle_menu_avt{
+clear:both;
+float:left;
+padding:0;
+background:none;
+}
+li.battle_menu_avt img{
+vertical-align:bottom;
+width:45px;
+}
+
+.attack_area img,.attack_area_trp img,.no_turn img{opacity:0.4;}
+/*li.party:before{content:"";opacity:0.5;position:absolute;width:100%;height:100%;background:#00f;}
+li.enemy:before{content:"";opacity:0.5;position:absolute;width:100%;height:100%;background:#f00;}*/
+/*li[data-pcstate="die"]:before{content:"";opacity:1;position:absolute;width:100%;height:100%;background:#000;}*/
+
+.active_area{background:#0bb;}
+.attack_vector_top,.attack_vector_left,.attack_vector_right,.attack_vector_bottom,.trp_area
+{background:#cc0;}
+.attack_area
+{background:#c00;}
+.attack_area_map
+{background:#c0c;}
+.attack_area_med
+{background:#0c0;}
+.attack_area_trp
+{background:#c66;}
+.smartPhone .active_area,.smartPhone .attack_vector_top,.smartPhone .attack_vector_left,.smartPhone .attack_vector_right,.smartPhone .attack_vector_bottom,.smartPhone .trp_area,.smartPhone .attack_area,.smartPhone .attack_area_map,.smartPhone .attack_area_med,.smartPhone .attack_trp{cursor:pointer;}
+
+
+#BIBar{
+position:absolute;
+bottom:0;
+width:100%;
+background:#fff;
+z-index:1;
+}
+#BIBar .hpBar,#BIBar .sunBar{
+width:100%;
+height:3px;
+border-bottom:1px solid #000;
+}
+#BIBar .hpBar{background:#c00;}
+#BIBar .sunBar{background:#0c0;}
+#BIBar .sunBar2{
+    background: #50f;
+    height: 3px;
+    border-bottom: 1px solid #000;
+    position: absolute;
+    bottom: 0;
+    z-index: 4;
+    width: 0%;
+}
+
+#battlePreviewSpace p{
+text-align:left;
+}
+.battlePreviewList{
+margin-bottom:10px;
+}
+.battlePreviewList:last-child{
+margin-bottom:0;
+}
+.battlePreviewList span{
+display:block;
+float:left;
+}
+.battlePreviewList span:nth-of-type(1){
+clear:both;
+margin-right:10px;
+}
+.battlePreviewList span:nth-of-type(2){
+padding:17px 0;
+}
+.battlePreviewList img{
+width:50px;
+vertical-align:bottom;
+}
+
+#turnResultSpace.cvPopup{
+position:absolute;
+}
+#turnResultSpace.cvPopup p{
+top:100px;
+-webkit transform:translate(-50%,0px);
+transform:translate(-50%,0px);
+}
+
+
+#turnResultSpace p{
+text-align:left;
+}
+.turnResultList{
+margin-bottom:10px;
+}
+.turnResultList span{
+display:block;
+clear:both;
+padding:0;
+margin-bottom:3px;
+}
+.turnResultList:last-child{
+margin-bottom:0;
+}
+.turnResultList span:nth-of-type(1){
+clear:none;
+display:block;
+float:left;
+margin-right:10px;
+}
+.turnResultList div span:nth-of-type(1){
+margin-right:0;
+}
+.turnResultList div{
+float:left;
+}
+.turnResultList div span:last-child{
+font-size:100%;
+}
+.turnResultList span:last-child{
+margin-bottom:0;
+font-size:125%;
+}
+.turnResultList div span:last-child{
+margin-bottom:3px;
+}
+.turnResultList img{
+width:50px;
+vertical-align:bottom;
+}
+
+.actPropaty_left,.actPropaty_right{
+position:absolute;
+top:50%;
+-webkit-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%);
+width:65%;
+padding:2%;
+background:rgba(0,0,20,0.5);
+color:#fff;
+font-weight:bold;
+text-align:center;
+z-index:2;
+border-radius:5px;
+}
+.actPropaty_left{left:65%;}
+.actPropaty_right{left:35%;}
+@media screen and (max-width:599px){
+.actPropaty_left,.actPropaty_right{font-size:0.8em;}
+}
+
+.actPropaty_left p,.actPropaty_right p{
+text-align:left;
+margin-bottom:5px;
+}
+.actPropaty_left p:last-child,.actPropaty_right p:last-child{
+margin-bottom:0px;
+}
+
+.oderDelayView{
+background-color:rgba(0,0,0,0.5);
+position:absolute;
+bottom:0;
+right:0;
+z-index:1;
+}
+
+/*.battle_cell.enemy img,.battle_cell.party img{width:calc(100% - 6px);}
+.battle_cell.enemy img{border:3px solid #f00;}
+.battle_cell.party img{border:3px solid #00f;}*/
+/*
+.battle_cell[data-pcElem="火"] img{border:3px solid #f00;}
+.battle_cell[data-pcElem="水"] img{border:3px solid #00f;}
+.battle_cell[data-pcElem="電"] img{border:3px solid #ff0;}
+.battle_cell[data-pcElem="木"] img{border:3px solid #0f0;}
+*/
+/*.battle_cell.enemy:after,.battle_cell.party:after{
+z-index:1;
+content:"";
+width:0;
+height:0;
+position:absolute;
+top:0;
+left:0;
+border:10px solid transparent;
+}
+.battle_cell.enemy:after{
+border-top:10px solid #f00;
+border-left:10px solid #f00;
+}
+.battle_cell.party:after{
+border-top:10px solid #00f;
+border-left:10px solid #00f;
+}
+*/
+
+.battle_cell:after{
+z-index:1;
+/*width:calc(100% - 34px);*/
+position:absolute;
+left:0;
+top:0;
+font-size:14px;
+padding:1px 3px;
+color:#333;
+font-weight:normal;
+text-align:center;
+}
+.battle_cell[data-pcPose="avoid"]:after{content:"避";}
+.battle_cell[data-pcPose="def"]:after{content:"防";}
+.battle_cell[data-pcPose="brk"]:after{content:"崩";}
+.battle_cell[data-pcElem="無"]:after{color:#fff;background:rgba(63,63,63,0.8);}
+.battle_cell[data-pcElem="火"]:after{color:#fff;background:rgba(255,32,0,0.8);}
+.battle_cell[data-pcElem="水"]:after{color:#fff;background:rgba(0,128,255,0.8);}
+.battle_cell[data-pcElem="電"]:after{background:rgba(255,255,0,0.8);}
+.battle_cell[data-pcElem="木"]:after{background:rgba(32,255,0,0.8);}
+.battle_cell.enemy:after{border-left:solid 8px #900;}
+.battle_cell.party:after{border-left:solid 8px #009;}
+
+
+
+span.trap_area{
+position:absolute;
+/*z-index:2;
+border:3px solid #f80;
+width:calc(100% - 6px);
+height:calc(100% - 6px);
+display:block;
+animation:flash 5s infinite;
+line-height:42px;
+color:#f80;*/
+    display: block;
+    animation: flash 4s infinite;
+    color: #f80;
+text-shadow:0 0 8px #ccc;
+    top: calc(50% - 0.48em);
+    left: calc(50% - 0.43em);
+    font-size: 3em;
+}
+
+
+li[data-pcstate]:before{
+-khtml-user-drag:element;
+z-index:1;
+content:"";
+width:100%;
+line-height:50px;
+height:calc(100% - 8px);
+position:absolute;
+bottom:8px;
+right:0;
+animation:flash 10s infinite;
+cursor:pointer;
+}
+li[data-pcstate=die]:before{
+background:rgba(0,0,0,0.6);
+animation:none;
+}
+li[data-pcstate=yakedo]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#f00;
+}
+li[data-pcstate=awa]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#0ff;
+}
+li[data-pcstate=mahi]:before{
+content:attr(data-pcEndState);
+color:#000;
+background:#ff0;
+}
+li[data-pcstate=doku]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#c0c;
+}
+li[data-pcstate=ice]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#0cc;
+}
+li[data-pcstate=plant]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#0c0;
+}
+li[data-pcstate=sleep]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#888;
+}
+li[data-pcstate=anger]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#c00;
+}
+li[data-pcstate=sex]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#f88;
+}
+li[data-pcstate=fear]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#f8f;
+}
+li[data-pcstate=strong]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#c80;
+}
+li[data-pcstate=dear]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#550;
+}
+li[data-pcstate=heavy]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#555;
+}
+li[data-pcstate=heart]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#f50;
+}
+li[data-pcstate=cool]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#8cc;
+}
+li[data-pcstate=inferno]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#500;
+}
+
+li[data-pcstate=quick]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#e88;
+animation:flash 1.5s infinite;
+}
+
+li[data-pcstate=berserk]:before{
+content:attr(data-pcEndState);
+color:#fff;
+background:#503;
+animation:flash 1.5s infinite;
+}
+
+
+
+
+
+.dmgHPDisp,.rcvHPDisp,.dmgSNDisp,.rcvSNDisp{
+    position: absolute;
+    left: 0;
+    width: 100%;
+color: #fff;
+    text-align: center;
+    font-size: 14px;
+z-index:2;
+ animation:wobble 0.25s 1;
+}
+.dmgHPDisp{bottom:16px;text-shadow:2px 2px 2px rgba(128,0,0,1),-2px 2px 2px rgba(128,0,0,1),2px -2px 2px rgba(128,0,0,1),-2px -2px 2px rgba(128,0,0,1);}
+.rcvHPDisp{bottom:16px;text-shadow:2px 2px 2px rgba(0,128,128,1),-2px 2px 2px rgba(0,128,128,1),2px -2px 2px rgba(0,128,128,1),-2px -2px 2px rgba(0,128,128,1);}
+.dmgSNDisp{bottom:4px;text-shadow:2px 2px 2px rgba(128,0,0,1),-2px 2px 2px rgba(128,0,0,1),2px -2px 2px rgba(128,0,0,1),-2px -2px 2px rgba(128,0,0,1);}
+.rcvSNDisp{bottom:4px;text-shadow:2px 2px 2px rgba(0,128,128,1),-2px 2px 2px rgba(0,128,128,1),2px -2px 2px rgba(0,128,128,1),-2px -2px 2px rgba(0,128,128,1);}
+
+
+
+.currentPc{
+animation:pulse 1.2s infinite;
+box-shadow: 0 0 10px 0px #000;
+z-index: 1;
+}
+.smartPhone .currentPc{cursor:pointer;}
+
+.kaihi{
+animation:wobble 1s;
+}
+
+.jello{
+animation:jello 0.5s,flash 0.5s 1;
+}
+.Vjello{
+animation:jello 0.5s,flash 0.25s 2;
+}
+.Fjello{
+animation:jello 0.5s;
+}
+
+.band{
+animation:rubberBand 1s;
+}
+
+.slipDamage{
+animation:jello 0.25s 2;
+}
+
+.slipRecov{
+animation:rubberBand 1s;
+}
+
+.sideDelete{
+animation:fadeOutDown 0.1s;
+}
+
+
+
+
+
+
+

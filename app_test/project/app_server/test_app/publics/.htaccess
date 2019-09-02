@@ -1,0 +1,9 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin: "*"
+</IfModule>
+<FilesMatch "\.html$">
+AddType application/x-httpd-php .html
+</FilesMatch>
+<IfModule mod_php7.c>
+  php_value auto_prepend_file "../pre2.php"
+</IfModule>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>テストチャット</title>
+  <link rel="stylesheet" type="text/css" href="../css/load.css">
+  <link rel="stylesheet" type="text/css" href="../css/animate.css">
+  <link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/style_2.css">
+  <link rel="stylesheet" type="text/css" href="../css/passcheck.css">
+  <link rel="stylesheet" type="text/css" href="../css/battle.css">
+</head>
+
+<body id="roomBody" class="clear">
+
+<div class="wrap" style="overflow-x:hidden;">
+
+<h1 class="clear"><span>チャット</span>-テストモード-</h1>
+<div id="welcome"></div>
+
+<ul id="menu">
+<li id="menu_child_Dice" class="menu_child">-</li>
+<li id="menu_child_view" class="menu_child">-</li>
+<li id="menu_child_battle" class="menu_child">-</li>
+<li id="menu_child_shop" class="menu_child">-</li>
+<li id="menu_child_Option" class="menu_child">Option</li>
+</ul>
+
+<h2 id="headInfo">info</h2>
+<div id="infoBGM">BGM</div>
+<div id="currentMember"><span></span>名</div>
+<dl id="info_dl" class="clear"></dl>
+<div id="b_wrap" class="clear"></div><!--ここにBATTLEゾーンができる-->
+<form id="add" action="../db_add.php" method="post">
+<img id="selectAvt" data-avtName="" src="" />
+<input id="hatsugen" type="text" name="data" value="" />
+<input id="hatugenType" type="submit" value="発言" />
+<span id="changeTextLine">改行あり</span>
+</form>
+<h2 id="headTalk">talk</h2>
+<div id="sessionTag"><div class="nameScrollWrap"><span></span></div></div>
+<dl id="view">
+</dl>
+
+<ul id="pageControll" class="clear"></ul>
+<div id="bgm_player"></div>
+
+<a id="backTopBtn"></a>
+<!--<a id="goBottomBtn"></a>;-->
+
+</div><!--wrap-->
+
+</body>
+
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/load_html.js"></script>
+
+<script>
+$('body').prepend(LOAD_DIV_START.replace('REPLACE',"load_app_start"));
+
+if(DEVICE=='sp'){$('body').addClass('smartPhone');}
+
+var SE={};
+SE.arr=[];
+
+$("body").append('<div style="display:none"><audio id="seShop" preload="auto">'+
+'<source src="../se/shop.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.shop=document.getElementById("seShop");
+SE.shop.load();
+
+$("body").append('<div style="display:none"><audio id="seEquip" preload="auto">'+
+'<source src="../se/equip.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.equip=document.getElementById("seEquip");
+SE.equip.load();
+
+$("body").append('<div style="display:none"><audio id="sePurge" preload="auto">'+
+'<source src="../se/purge.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.purge=document.getElementById("sePurge");
+SE.purge.load();
+
+$("body").append('<div style="display:none"><audio id="seEnter" preload="auto">'+
+'<source src="../se/enter.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.enter=document.getElementById("seEnter");
+SE.enter.load();
+
+$("body").append('<div style="display:none"><audio id="seComent" preload="auto">'+
+'<source src="../se/coment.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.coment=document.getElementById("seComent");
+SE.coment.load();
+
+$("body").append('<div style="display:none"><audio id="seComentL" preload="auto">'+
+'<source src="../se/coment_long.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.comentL=document.getElementById("seComentL");
+SE.comentL.load();
+
+$("body").append('<div style="display:none"><audio id="seEat" preload="auto">'+
+'<source src="../se/eat.mp3" type="audio/mp3">'+
+'</audio></div>');
+SE.eat=document.getElementById("seEat");
+SE.eat.load();
+
+</script>
+<!--[if lt IE 9]>
+<script src="../js/css3-mediaqueries.js"></script>
+<script src="../js/html5shiv.js"></script>
+<![endif]-->
+<script>
+var SPAN=document.createElement('span');
+SPAN.width=SPAN.height=0;
+window.ondrop=function(e){e.preventDefault();};
+function drag(event){
+event.dataTransfer.setData('text/html',null);
+event.dataTransfer.effectAllowed='move';
+event.dataTransfer.setDragImage(SPAN,0,0);};
+function drop(event){
+event.preventDefault();
+event.dataTransfer.dropEffect='move';};
+</script>
+<script>
+
+var HISTORYCNT=window.history.state?window.history.state.cnt:0;
+
+var VH={
+selectAvt:'selectAvt',
+menu_child_view:'menu_child_view',
+menu_child_Dice:'menu_child_Dice',
+optionListBattleInfo:'optionListBattleInfo',
+talkEdit:'talkEdit',
+statusChar:'statusChar',
+};
+
+var VP={
+talkEdit:'g_talkNum',
+statusCharMode:'statusCharMode',
+statusCharCid:'statusCharCid',
+statusCharSrc:'statusCharSrc'
+};
+
+var DEL_G={
+divid:{param:[],hash:[VH.selectAvt,VH.menu_child_view,VH.menu_child_Dice,VH.optionListBattleInfo]},
+tool_close:{param:[],hash:[VH.menu_child_Dice,VH.optionListBattleInfo]},
+talkEdit:{param:[VP.talkEdit],hash:['talkEdit']},
+statusChar:{param:[VP.statusCharMode,VP.statusCharCid,VP.statusCharSrc],hash:[]}
+};
+
+var OLDHASHARR=[];
+if(location.hash!='')OLDHASHARR=location.hash.replace('#','').split('&');
+
+
+function HISTORYPUSH(newParam,newHash,delParam,delHash){
+newParam.split('&').forEach(function(val){
+delParam=delParam.filter(function(del){return val.split('=')[0]!=del});
+});
+newHash.split('&').forEach(function(val){
+delHash=delHash.filter(function(del){return val!=del});
+});
+
+var hantei=false;
+var excArr=[];
+var oldParam=location.search;
+var oldHash=location.hash;
+
+var oldParamArr=[];
+if(oldParam!=''&&newParam!=''){
+excArr=[];
+oldParamArr=oldParam.replace('?','').split('&');
+var newParamArr=newParam.split('&');
+
+$.each(newParamArr,function(indexNew){
+$.each(oldParamArr,function(indexOld){
+
+var regexp = new RegExp();
+if(oldParamArr[indexOld].split('=')[0]==newParamArr[indexNew].split('=')[0]){
+oldParamArr[indexOld] = newParamArr[indexNew];
+excArr.push(newParamArr[indexNew]);
+hantei=true;
+}
+
+});
+});
+
+newParamArr=newParamArr.filter(function(newParams){return excArr.indexOf(newParams)==-1});
+
+if(oldParamArr.length){oldParam='?'+oldParamArr.join('&');}
+else{oldParam='';}
+if(newParamArr.length){newParam=newParamArr.join('&');}
+else{newParam='';}
+}
+if(oldParam!=''&&delParam.length){
+excArr=[];
+oldParamArr=oldParam.replace('?','').split('&');
+
+$.each(delParam,function(indexDel){
+$.each(oldParamArr,function(indexOld){
+
+if(oldParamArr[indexOld].split('=')[0]==delParam[indexDel].split('=')[0]){
+excArr.push(oldParamArr[indexOld]);
+hantei=true;
+}
+
+});
+});
+
+oldParamArr=oldParamArr.filter(function(oldParams){return excArr.indexOf(oldParams)==-1});
+
+if(oldParamArr.length){oldParam='?'+oldParamArr.join('&');}
+else{oldParam='';}
+}
+
+
+var oldHashArr=[];
+if(oldHash!=''&&newHash!=''){
+excArr=[];
+oldHashArr=oldHash.replace('#','').split('&');
+var newHashArr=newHash.split('&');
+
+$.each(newHashArr,function(indexNew){
+$.each(oldHashArr,function(indexOld){
+if(oldHashArr[indexOld]==newHashArr[indexNew]){
+oldHashArr[indexOld] = newHashArr[indexNew];
+excArr.push(newHashArr[indexNew]);
+}
+
+});
+});
+
+newHashArr=newHashArr.filter(function(newHashes){return excArr.indexOf(newHashes)==-1});
+
+if(oldHashArr.length){oldHash='#'+oldHashArr.join('&');}
+else{oldHash='';}
+if(newHashArr.length){newHash=newHashArr.join('&');}
+else{newHash='';}
+}
+if(oldHash!=''&&delHash.length){
+excArr=[];
+oldHashArr=oldHash.replace('#','').split('&');
+
+$.each(delHash,function(indexDel){
+$.each(oldHashArr,function(indexOld){
+
+if(oldHashArr[indexOld]==delHash[indexDel]){
+oldHashArr = oldHashArr.filter(function(n){return n !== oldHashArr[indexOld]});
+excArr.push(oldHashArr[indexOld]);
+hantei=true;
+}
+
+});
+});
+
+oldHashArr=oldHashArr.filter(function(oldHashes){return excArr.indexOf(oldHashes)==-1});
+
+if(oldHashArr.length){oldHash='#'+oldHashArr.join('&');}
+else{oldHash='';}
+}
+
+
+if(oldParam==''){
+if(newParam!=''){
+newParam='?'+newParam;
+hantei=true;
+}
+}//oldParamが空の場合
+else{
+if(newParam!=""){
+newParam=oldParam+'&'+newParam;
+hantei=true;
+}
+else{
+newParam=oldParam;
+}
+}//oldParamが空でないの場合
+if(oldHash==''){
+if(newHash!=''){
+newHash='#'+newHash;
+hantei=true;
+}
+}//oldHashが空の場合
+else{
+if(newHash!=''){
+newHash=oldHash+'&'+newHash;
+hantei=true;
+}
+else{
+newHash=oldHash;
+}
+}//oldHashが空でないの場合
+
+if(hantei){
+HISTORYCNT++;
+history.pushState({cnt:HISTORYCNT},null,'/test_app/public/'+newParam+newHash);
+if(location.hash!=''){OLDHASHARR=location.hash.replace('#','').split('&');}
+else{OLDHASHARR=[];}
+}
+
+return hantei;
+
+}//HISTORYPUSH
+
+HISTORYPUSH('','SPA',[],[]);
+
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}//getParam
+
+
+var USERNAME="";
+var DATA="";
+
+var DIVMODE=null;
+
+var MAX_HEIGHT=6;
+var MAX_WIDTH=10;
+var PAGE={};
+PAGE.curSessionId=null;
+PAGE.order="";
+PAGE.totalTalk=0;
+PAGE.backTalk=0;
+PAGE.totalPage=0;
+PAGE.curPage=0;
+PAGE.clickAdd=100;
+PAGE.page=500;
+PAGE.posId=0;
+
+var AUDIO={};
+AUDIO.bgm=null;
+AUDIO.playId=null;
+AUDIO.playFlg=false;
+
+var SANITAIZE={
+encode:function(str){
+return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/`/g,'&#x60;').replace(/\n/g,'<br>').replace(/\r/g,'<br>').replace(/\r\n/g,'<br>');
+},
+decode:function(str){
+return str.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#039;/g,'\'').replace(/&#x60;/g,'`').replace(/&amp;/g,'&').replace(/<br>/g,'\n');
+}
+};
+
+var TOOL={};
+TOOL.selectedGoods=null;
+TOOL.selectedCreate=null;
+TOOL.contentGet=null;
+TOOL.content={};
+TOOL.content.ev=[];
+TOOL.content.memo=[];
+TOOL.evWrite=null;
+TOOL.memoWrite=null;
+TOOL.memoWriteOne=null;
+
+var KENGEN=0;
+
+</script>
+<script src="../js/class.js"></script>
+<script src="../js/std.js"></script>
+<script src="../js/page.js"></script>
+<script src="../js/bgm.js"></script>
+<script src="../js/popup.js"></script>
+<script>
+
+$(document).on('click','#logoutBtn',function(event){
+$.post('../auth.php?mode=logout', {}, function(data){
+location.href=FQDN+'/test_app/login.html';
+});
+});
+</script>
+<script>
+var STATECONNECT=false;
+var socketio=null;
+$.when(SOCKET_LOAD())
+.then(
+function(){
+socketio=io.connect(FQDN+':8080');
+STATECONNECT=true;
+socketio.on('disconnect',function(){STATECONNECT=false;});
+STD_FUNC();
+PAGE_FUNC();
+BGM_FUNC();
+});
+</script>
+</html>

@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+
+  app_server:
+    build: ./app_server
+    image: app_server
+    container_name: app_server
+    init: true
+    volumes:
+      - ./app_server/test_app:/var/www/html/test_app
+      - ./app_server/favicon/favicon.ico:/var/www/html/favicon.ico
+      - ./https_portal/ssl_certs:/var/ssl_certs
+      - ./app_server/phpconf/php.ini:/usr/local/etc/php/php.ini
+    tty: true
+    stdin_open: true
+    command: bash -c 'forever start /var/www/html/test_app/mod/app.js && apache2-foreground'
+    ports:
+      - '80:80'
+      - '8080:8080'
+
+
+  mysql:
+    build: ./mysql
+    image: mysql:5.7
+    container_name: mysql
+    init: true
+    volumes:
+      - ./mysql/app_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    command: '--innodb_use_native_aio=0'
+    environment:
+      - MYSQL_ROOT_PASSWORD=00000
+
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: myadmin
+    init: true
+    environment:
+      - PMA_HOST=mysql
+    ports:
+      - '8000:80'

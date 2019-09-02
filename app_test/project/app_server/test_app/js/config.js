@@ -1,0 +1,2 @@
+var FQDN='http://192.168.99.100';
+var TIMEOUT=30000;

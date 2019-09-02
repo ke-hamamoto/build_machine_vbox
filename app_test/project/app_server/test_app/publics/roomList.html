@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>ルームリスト</title>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/load.css">
+<link rel="stylesheet" type="text/css" href="../css/style_login.css">
+<link rel="stylesheet" type="text/css" href="../css/dataedit.css">
+<link rel="stylesheet" type="text/css" href="../css/style_roomList.css">
+</head>
+
+<body id="roomBody" class="clear">
+
+<div id="pageHeader" class="clear">
+<div id="title">
+<h1><span>チャット</span>-テストモード-</h1>
+<div id="welcome"></div>
+</div>
+<div id="roomListNews" data-mailCnt=''>お知らせ<span class="new">!</span></div>
+</div>
+
+<div id="pageContent">
+<div id="roomListOption">メニュー</div>
+<h2>参加ルーム：<span style="font-size:0.95em;"><span id="curJoinRoomNum"></span>部屋</span></h2>
+<ul id="joinRoom"></ul>
+</div>
+</body>
+
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/load_html.js"></script>
+<script>if(DEVICE=='sp'){$('body').addClass('smartPhone');}</script>
+<!--[if lt IE 9]>
+<script src="../js/css3-mediaqueries.js"></script>
+<script src="../js/html5shiv.js"></script>
+<![endif]-->
+
+<script src="../js/popup.js"></script>
+<script src="../js/roomList.js"></script>
+<script src="../js/class.js"></script>
+
+<script>
+
+var STATECONNECT=false;
+var socketio=null;
+var DATA=null;
+$.when(SOCKET_LOAD())
+.then(
+function(){
+socketio=io.connect(FQDN+':8080');
+STATECONNECT=true;
+socketio.on('disconnect',function(){STATECONNECT=false;});
+ROOMLIST_FUNC();
+
+
+socketio.on('connect',function(){
+$.post('../who.php',{}, function(data){
+DATA=JSON.parse(data);
+socketio.emit("enter_roomList",DATA.uidToken);
+});
+});
+
+
+});
+
+</script>
+<script>
+var USERNAME="";
+var DATA="";
+$.post('../who.php',{}, function(data){
+DATA=JSON.parse(data);
+USERNAME=DATA.uid;
+$("#welcome").prepend("<div><span>"+USERNAME+"</span></div>");
+});
+</script>
+<script>
+$(window).on('focus',function(){
+if(STATECONNECT==false)location.reload(false);
+$.post('../who.php',{},function(data){
+data=JSON.parse(data);
+if(DATA.uid!=data.uid)location.reload(false);
+});
+});
+</script>
+<script>
+$(document).on('mouseenter','#welcome div',function(event){
+var domName=$(this).find("span");
+var scrollWidth=domName.width();
+if(scrollWidth>$(this).width()){
+var animeObj={};
+animeObj.dom=domName;
+var anime=new APP.anime(animeObj);
+anime.nameScroll_2(scrollWidth);
+anime=null;
+}
+});
+/////////////////////////
+$(document).on('click','#logoutBtn',function(event){
+
+var load_rm="load_roomListOut";
+var load_div=LOAD_DIV.replace('REPLACE',load_rm);
+$('body').prepend(load_div);
+
+event.preventDefault();
+$.post('../auth.php?mode=logout', {}, function(data){
+location.href=FQDN+'/test_app/login.html';
+
+load_rm_func=function(){$('#'+load_rm).remove();}
+setTimeout(load_rm_func,200);
+
+});
+});
+</script>
+
+</html>
