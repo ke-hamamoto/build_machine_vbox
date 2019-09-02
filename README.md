@@ -20,9 +20,9 @@ Docker-machineとVirtualBoxを用いてLAMP開発環境を構築するプロジ�
 １０． 再起動が完了したら $docker-machine ssh で仮想マシーンに接続  
 １１． [compose-install.sh] [docker-compose.yml] がある project フォルダまで移動  
 １２． $docker-compose -v で docker-compose がインストールされているか確認  
-１３．　インストールされていなかったら $sudo ./compose-install.sh で docker-compose をインストール  
-１４．　$docker-compose up -d  
-１５．　ブラウザで [http://192.168.99.100/test_app/] または ０５． で変更した場合は [http://~変更したIP~/test_app/] を確認する  
+１３． インストールされていなかったら $sudo ./compose-install.sh で docker-compose をインストール  
+１４． $docker-compose up -d  
+１５． ブラウザで [http://192.168.99.100/test_app/] または ０５． で変更した場合は [http://~変更したIP~/test_app/] を確認する  
 １６． テストアプリが起動していたら完了です！  
 
 ## 立ち上がった環境で開発
