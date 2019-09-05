@@ -137,9 +137,9 @@ CREATE TABLE IF NOT EXISTS `bgm` (
 --
 
 REPLACE INTO `bgm` (`bgmid`, `uid`, `mode`, `type`, `url`, `name`, `used`) VALUES
-(1, 'ユーフルカ', 'battle', '渋い', 'bgm/battle-arms', 'マカロニウェスタン・バトル！～荒野の決闘～', 0),
-(2, 'ユーフルカ', 'dngn', '切ない', 'bgm/Moon-ruins', '月の廃墟', 0),
-(3, 'ユーフルカ', 'ev', 'ダーク', 'bgm/Horror-MusicBox', '死を呼ぶオルゴール', 0);
+(1, '-', 'battle', '渋い', 'bgm/wenkamui', 'サンプル１', 0),
+(2, '-', 'dngn', '切ない', 'bgm/wen-kamuy2', 'サンプル２', 0),
+(3, '-', 'ev', 'ダーク', 'bgm/yomi2_mixv2', 'サンプル３', 0);
 
 -- --------------------------------------------------------
 
